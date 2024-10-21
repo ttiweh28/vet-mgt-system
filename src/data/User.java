@@ -7,16 +7,26 @@ public class User {
     private int userId;
     private String PhoneNumber;
     private String email;
+    private Address address;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, int userId, String phoneNumber, String email) {
+    public User(String firstName, String lastName, int userId, String phoneNumber, String email, Address address1) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.userId = userId;
         PhoneNumber = phoneNumber;
         this.email = email;
+        this.address=address1;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getFirstName() {
