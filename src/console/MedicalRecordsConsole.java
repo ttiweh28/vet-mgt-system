@@ -26,15 +26,15 @@ public class MedicalRecordsConsole {
 
             if (input > owner.getPets().size() || input < 0) {
                 ConsoleUtil.displayColoredMessageWithNewLine("Invalid choice", ConsoleUtil.RED);
-            }else{
-              ConsoleUtil.displayColoredMessageWithNewLine(owner.getPets().get(input-1).getMedicalRecordsList().toString(), ConsoleUtil.BLUE);
+            } else {
+                ConsoleUtil.displayColoredMessageWithNewLine(owner.getPets().get(input - 1).getMedicalRecordsList().toString(), ConsoleUtil.BLUE);
             }
 
         }
 
     }
 
-    public static void updateMedicalRecord(){
+    public static void updateMedicalRecord() {
         ConsoleUtil.displayColoredMessageWithNewLine("Choice pet: ", ConsoleUtil.BLUE);
 
         PetService petService = new PetServiceImpl();
@@ -48,10 +48,9 @@ public class MedicalRecordsConsole {
 
         int input = ConsoleUtil.getScanner().nextInt();
 
-        if(input>petService.getAllPets().size() || input<0){
+        if (input > petService.getAllPets().size() || input < 0) {
             ConsoleUtil.displayColoredMessageWithNewLine("Invalid choice", ConsoleUtil.RED);
-        }
-        else {
+        } else {
 
         }
     }

@@ -11,10 +11,8 @@ import java.util.Scanner;
 
 public class Login {
 
+    public static User loggedInUser = null;
     static UserService userService = new UserServiceImpl();
-
-    public static User loggedInUser= null;
-
 
     public static void userLogin() {
 
@@ -54,7 +52,7 @@ public class Login {
 
     private static void displayOptions(UserType userType) {
 
-        switch (userType){
+        switch (userType) {
             case PET_OWNER -> {
                 ConsoleUtil.clearConsole();
                 ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
@@ -62,10 +60,9 @@ public class Login {
                 ConsoleUtil.displayColoredMessageWithNewLine("2, View pets medical history", ConsoleUtil.BLUE);
                 int input = ConsoleUtil.getScanner().nextInt();
 
-                if (input == 1){
+                if (input == 1) {
                     AppointmentConsole.scheduleAppointment();
-                }
-               else if (input == 2){
+                } else if (input == 2) {
                     MedicalRecordsConsole.viewMedicalRecords();
                 }
             }
@@ -75,17 +72,18 @@ public class Login {
                 ConsoleUtil.displayColoredMessageWithNewLine("1. Add pet", ConsoleUtil.BLUE);
                 int input = ConsoleUtil.getScanner().nextInt();
 
-                if (input == 1){
+                if (input == 1) {
                     PetConsole.addPet();
                 }
 
-            }  case VET_DOCTOR -> {
+            }
+            case VET_DOCTOR -> {
                 ConsoleUtil.clearConsole();
                 ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
                 ConsoleUtil.displayColoredMessageWithNewLine("1. Update Medical records", ConsoleUtil.BLUE);
                 int input = ConsoleUtil.getScanner().nextInt();
 
-                if (input == 1){
+                if (input == 1) {
 
                 }
 
@@ -100,7 +98,7 @@ public class Login {
             User user = userService.login(info.get("email"), info.get("password"), userType);
             if (user == null) {
                 ConsoleUtil.displayColoredMessageWithNewLine("Invalid email/password, please try again", ConsoleUtil.RED);
-            }else {
+            } else {
                 return user;
             }
         }
@@ -109,14 +107,14 @@ public class Login {
     private static Map<String, String> loginForm() {
 
         Map<String, String> unamePword = new HashMap<>();
-        String email=null;
+        String email = null;
         while (true) {
             ConsoleUtil.displayColoredMessageWithNewLine("Enter email: ", ConsoleUtil.BLUE);
             email = new Scanner(System.in).nextLine();
             boolean validEmail = ConsoleUtil.isValidEmail(email);
             if (!validEmail) {
                 ConsoleUtil.displayColoredMessageWithNewLine("Invalid email format, please enter a valid email", ConsoleUtil.RED);
-            }else{
+            } else {
                 break;
             }
         }

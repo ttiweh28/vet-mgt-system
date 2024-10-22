@@ -10,7 +10,6 @@ public class Main {
     public static void main(String[] args) {
 
 
-
 //        LoadingPage.showLoadingPage("Vet Management System", 2);
 
         ConsoleUtil.displayColoredMessageWithNewLine("Load DummyData?(Y/N)", ConsoleUtil.GREEN);
@@ -21,7 +20,7 @@ public class Main {
             DummyDataPopulate.populateAll();
         }
 
-        Login.userLogin ();
+        Login.userLogin();
     }
 
 

@@ -1,9 +1,5 @@
 import data.*;
 import data.dao.Storage;
-import service.PetOwnerService;
-import service.PetService;
-import service.impl.PetOwnerServiceImpl;
-import service.impl.PetServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,8 +8,8 @@ import java.util.List;
 
 public class DummyDataPopulate {
 
-   static List<Pet> pets = new ArrayList<>();
-   static List<PetOwner> petOwners = new ArrayList<>();
+    static List<Pet> pets = new ArrayList<>();
+    static List<PetOwner> petOwners = new ArrayList<>();
 
 
     public static void populateAdministrators() {
@@ -50,11 +46,11 @@ public class DummyDataPopulate {
 
     private static List<Pet> populatePets() {
 
-        Pet pet1 = new Pet( "Golgy", 3);
+        Pet pet1 = new Pet("Golgy", 3);
         pet1.addMedicalRecords(new MedicalRecord(1, LocalDate.now().minusMonths(3), "Vaccination", pet1));
         pet1.addMedicalRecords(new MedicalRecord(2, LocalDate.now().minusMonths(1), "Check-up", pet1));
 
-        Pet pet2 = new Pet( "Helly", 2);
+        Pet pet2 = new Pet("Helly", 2);
         pet2.addMedicalRecords(new MedicalRecord(3, LocalDate.now().minusMonths(5), "Surgery", pet2));
 
 
@@ -86,7 +82,7 @@ public class DummyDataPopulate {
         List<Appointment> appointments = new ArrayList<>();
 
         Appointment app1 = new Appointment(LocalDateTime.now().plusDays(3), "null", petOwners.get(0));
-        Appointment app2 = new Appointment( LocalDateTime.now().plusDays(7), "null", petOwners.get(0));
+        Appointment app2 = new Appointment(LocalDateTime.now().plusDays(7), "null", petOwners.get(0));
 
         app1.setPetOwner(petOwners.get(0));
         app2.setPetOwner(petOwners.get(0));

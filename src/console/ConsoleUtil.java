@@ -24,7 +24,6 @@ public class ConsoleUtil {
     public static final String WHITE_BACKGROUND = "\033[47m";   // WHITE BACKGROUND
 
 
-
     // Regular expression for validating email
     private static final String EMAIL_REGEX = "^[\\w-\\.]+@[\\w-]+\\.[a-zA-Z]{2,}$";
 
@@ -61,7 +60,7 @@ public class ConsoleUtil {
         System.out.flush();
     }
 
-    public static Scanner getScanner(){
+    public static Scanner getScanner() {
         System.out.print(BLUE);
         Scanner scanner = new Scanner(System.in);
 
@@ -69,7 +68,7 @@ public class ConsoleUtil {
 
     }
 
-    public static LocalDate DateValidation(String dateText){
+    public static LocalDate DateValidation(String dateText) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
@@ -86,7 +85,7 @@ public class ConsoleUtil {
     }
 
 
-    public static LocalTime timeValidation(String timeText){
+    public static LocalTime timeValidation(String timeText) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
 
@@ -102,7 +101,7 @@ public class ConsoleUtil {
 
     }
 
-    public static LocalDateTime DateTimeValidation(String timeText){
+    public static LocalDateTime DateTimeValidation(String timeText) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
 

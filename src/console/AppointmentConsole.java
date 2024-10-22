@@ -4,7 +4,6 @@ import data.Appointment;
 import data.PetOwner;
 import service.AppointmentService;
 import service.impl.AppointmentServiceImpl;
-import service.impl.PetOwnerServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -48,7 +47,7 @@ public class AppointmentConsole {
 
             if (appointment == null) {
                 ConsoleUtil.displayColoredMessageWithNewLine("The selected Date is not Available, please select another Date/time", ConsoleUtil.RED);
-            }else{
+            } else {
                 break;
             }
         }

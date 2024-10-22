@@ -1,6 +1,5 @@
 package data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Random;
 
@@ -15,7 +14,7 @@ public class Appointment {
         setAppointmentID();
         this.date = time;
         this.reason = reason;
-        this.petOwner =petOwner;
+        this.petOwner = petOwner;
     }
 
     public PetOwner getPetOwner() {
@@ -31,7 +30,7 @@ public class Appointment {
     }
 
     private void setAppointmentID() {
-        this.appointmentID = new Random().nextInt(10000,99999);
+        this.appointmentID = new Random().nextInt(10000, 99999);
     }
 
     public String getReason() {

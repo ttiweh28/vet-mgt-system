@@ -33,7 +33,7 @@ public class Pet {
     }
 
     private void setPetID() {
-        this.petID = new Random().nextInt(10000,99999);
+        this.petID = new Random().nextInt(10000, 99999);
     }
 
     @Override
