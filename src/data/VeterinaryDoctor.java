@@ -1,12 +1,12 @@
 package data;
 
-public class VeterinaryDoctor extends User{
+public class VeterinaryDoctor extends User {
 
-    private String Certification;
+    private final String Certification;
+    private Appointment appointment;
 
     public VeterinaryDoctor(String cert) {
-        super();
-        this.Certification=cert;
+        this.Certification = cert;
     }
 
     public String getCertification() {

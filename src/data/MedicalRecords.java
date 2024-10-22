@@ -1,13 +1,12 @@
 package data;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class MedicalRecords {
 
     private int recordID;
     private LocalDate date;
-    private String  treatment;
+    private String treatment;
     private Pet pet;
 
 

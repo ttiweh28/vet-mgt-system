@@ -7,6 +7,8 @@ public class Appointment {
     private LocalDate date;
     private LocalDate time;
     private String reason;
+    private PetOwner petOwner;
+
 
     public Appointment(int appointmentID, LocalDate date, LocalDate time, String reason) {
         this.appointmentID = appointmentID;

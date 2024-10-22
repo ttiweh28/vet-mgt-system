@@ -1,8 +1,10 @@
 package data;
 
-public class PetOwner extends User{
+import java.util.List;
 
-    public PetOwner() {
-    }
+public class PetOwner extends User {
+
+    private List<Pet> pets;
+    private List<Appointment> appointments;
 
 }

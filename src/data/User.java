@@ -18,7 +18,7 @@ public class User {
         this.userId = userId;
         PhoneNumber = phoneNumber;
         this.email = email;
-        this.address=address1;
+        this.address = address1;
     }
 
     public Address getAddress() {
