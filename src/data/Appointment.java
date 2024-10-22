@@ -56,4 +56,17 @@ public class Appointment {
     public void setReason(String reason) {
         this.reason = reason;
     }
-}
+
+    @Override
+    public String toString() {
+            return "Appointment ID: " + appointmentID +
+                    ", Date: " + date +
+                    ", Time: " + time +
+                    ", Reason: " + reason +
+                    ", Pet Owner: " + (petOwner != null
+                    ? petOwner.getFirstName() + " " + petOwner.getLastName()
+                    : "No Owner Assigned");
+        }
+
+    }
+

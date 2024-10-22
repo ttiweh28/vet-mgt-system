@@ -52,4 +52,14 @@ public class MedicalRecords {
     public void setPet(Pet pet) {
         this.pet = pet;
     }
+
+    @Override
+    public String toString() {
+        return "MedicalRecords{" +
+                "recordID=" + recordID +
+                ", date=" + date +
+                ", treatment='" + treatment + '\'' +
+                ", pet=" + pet +
+                '}';
+    }
 }

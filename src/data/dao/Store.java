@@ -30,6 +30,13 @@ public final class Store {
     public static List<MedicalRecords> getMedicalRecords() {
         return medicalRecords;
     }
+    public static List<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public static List<Pet> getPetList() {
+        return pets;
+    }
 
     //retrieve a medical record from a list of medical records using an id
     public static String getMedicalRecord(int recordid){
@@ -52,10 +59,19 @@ public final class Store {
                         ", Date: " + appointment.getDate() +
                         ", Time: " + appointment.getTime() +
                         ", Reason: " + appointment.getReason() +
-                        ", for : " + (appointment.getPetOwner() != null ? appointment.getPetOwner().getLastName()+" "+appointment.getPetOwner().getFirstName() : "No Owner Assigned"))  // Accessing getName() from User
+                        ", for : " + (appointment.getPetOwner() != null ? appointment.getPetOwner().getLastName()+" "+appointment.getPetOwner().getFirstName() : "No Owner Assigned"))
         .orElse("Appointment not found");
     }
-
+    //retrieve a particular pet's information from a list of pets using an id
+    public static String getPet(int petID){
+        return pets.stream()
+                .filter(pet -> pet.getPetID() == petID)
+                .findFirst()
+                .map(pet -> "Pet: " + pet.getPetID() +
+                        ", Name: " + pet.getPetName() +
+                        ", Age: " + pet.getPetAge() )
+                .orElse("Pet not found");
+    }
 
     }
 
