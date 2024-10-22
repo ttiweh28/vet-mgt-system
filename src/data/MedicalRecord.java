@@ -2,7 +2,7 @@ package data;
 
 import java.time.LocalDate;
 
-public class MedicalRecords {
+public class MedicalRecord {
 
     private int recordID;
     private LocalDate date;
@@ -10,14 +10,14 @@ public class MedicalRecords {
     private Pet pet;
 
 
-    public MedicalRecords(int recordID, LocalDate date, String treatment, Pet pet) {
+    public MedicalRecord(int recordID, LocalDate date, String treatment, Pet pet) {
         this.recordID = recordID;
         this.date = date;
         this.treatment = treatment;
         this.pet = pet;
     }
 
-    public MedicalRecords(int recordID) {
+    public MedicalRecord(int recordID) {
         this.recordID = recordID;
     }
 

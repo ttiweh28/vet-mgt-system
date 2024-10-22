@@ -1,7 +1,9 @@
+import console.ConsoleUtil;
 
 public class  Main{
 
     public static void main(String[] args) {
-        System.out.println("hi");
+
+        ConsoleUtil.displayColoredMessage("Load DummyData?", ConsoleUtil.BLUE);
     }
 }
