@@ -10,4 +10,6 @@ public interface UserService {
     boolean updateUser(User user);
 
     boolean deleteUser(int userId);
+
+    User login(String username, String password, UserType userType);
 }

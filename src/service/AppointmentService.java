@@ -3,11 +3,12 @@ package service;
 import data.Appointment;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface AppointmentService {
 
-    Appointment createAppointment(Appointment appointment);
+    Appointment scheduleAppointment(LocalDateTime appointmentDate, String reason);
 
     Appointment getAppointmentById(int appointmentId);
 

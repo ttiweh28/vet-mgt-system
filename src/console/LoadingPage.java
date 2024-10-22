@@ -9,11 +9,12 @@ public class LoadingPage {
     public static final String RESET = "\u001B[0m";
 
     // Main method to run the example
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+    public static void showLoadingPage(String message, int progressBarTime) {
         LoadingPage consoleIO = new LoadingPage();
 
         // Display large text first
-        consoleIO.displayLargeText("Vet Management System");
+        consoleIO.displayLargeText(message);
 
         // Pause for 2 seconds before blinking
         //      consoleIO.flushAndSleep(2000);
@@ -22,7 +23,7 @@ public class LoadingPage {
         //     consoleIO.blinkText("Vet Management System", 10, 500);
 
         // Display loading progress bar for 3 seconds
-        consoleIO.displayLoadingBar(3);
+        consoleIO.displayLoadingBar(progressBarTime);
     }
 
     // Method to display blinking text

@@ -1,20 +1,21 @@
 package data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Random;
 
 public class Appointment {
     private int appointmentID;
-    private LocalDate date;
-    private LocalDate time;
+    private LocalDateTime date;
     private String reason;
     private PetOwner petOwner;
 
 
-    public Appointment(int appointmentID, LocalDate date, LocalDate time, String reason) {
-        this.appointmentID = appointmentID;
-        this.date = date;
-        this.time = time;
+    public Appointment(LocalDateTime time, String reason, PetOwner petOwner) {
+        setAppointmentID();
+        this.date = time;
         this.reason = reason;
+        this.petOwner =petOwner;
     }
 
     public PetOwner getPetOwner() {
@@ -29,24 +30,8 @@ public class Appointment {
         return appointmentID;
     }
 
-    public void setAppointmentID(int appointmentID) {
-        this.appointmentID = appointmentID;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalDate getTime() {
-        return time;
-    }
-
-    public void setTime(LocalDate time) {
-        this.time = time;
+    private void setAppointmentID() {
+        this.appointmentID = new Random().nextInt(10000,99999);
     }
 
     public String getReason() {
@@ -61,12 +46,18 @@ public class Appointment {
     public String toString() {
         return "Appointment ID: " + appointmentID +
                 ", Date: " + date +
-                ", Time: " + time +
                 ", Reason: " + reason +
                 ", Pet Owner: " + (petOwner != null
                 ? petOwner.getFirstName() + " " + petOwner.getLastName()
                 : "No Owner Assigned");
     }
 
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 }
 

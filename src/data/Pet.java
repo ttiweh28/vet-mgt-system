@@ -3,6 +3,7 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Pet {
 
@@ -12,8 +13,8 @@ public class Pet {
     private List<MedicalRecord> medicalRecordList;
     private List<Appointment> appointment;
 
-    public Pet(int petID, String petName, int petAge) {
-        this.petID = petID;
+    public Pet(String petName, int petAge) {
+        setPetID();
         this.petName = petName;
         this.petAge = petAge;
         this.medicalRecordList = new ArrayList<>();
@@ -31,8 +32,8 @@ public class Pet {
         return petID;
     }
 
-    public void setPetID(int petID) {
-        this.petID = petID;
+    private void setPetID() {
+        this.petID = new Random().nextInt(10000,99999);
     }
 
     @Override

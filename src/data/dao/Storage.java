@@ -1,7 +1,9 @@
 package data.dao;
 
 import data.*;
+import service.UserType;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +64,58 @@ public final class Storage {
                 .orElse(null);
     }
 
+  //retrieve a particular pet's information from a list of pets using an id
+    public static PetOwner getPetOwner(int petOwnerIdD) {
+        return petOwners.stream()
+                .filter(pet -> pet.getUserId() == petOwnerIdD)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public static User getUserByEmailAndPassword(String email, String password, UserType userType){
+
+       return switch (userType){
+            case ADMINISTRATOR ->  administrators.stream()
+                    .filter(user->user.getEmail().equalsIgnoreCase(email))
+                    .filter(user-> user.getPassword().equals(password))
+                    .findFirst()
+                    .orElse(null);
+           case PET_OWNER ->  petOwners.stream()
+                    .filter(user->user.getEmail().equalsIgnoreCase(email))
+                    .filter(user-> user.getPassword().equals(password))
+                    .findFirst()
+                    .orElse(null);
+           case VET_DOCTOR ->  veterinaryDoctors.stream()
+                    .filter(user->user.getEmail().equalsIgnoreCase(email))
+                    .filter(user-> user.getPassword().equals(password))
+                    .findFirst()
+                    .orElse(null);
+        };
+    }
+
+
+    public static boolean  getAppointmentBasedOnDateAndTime(LocalDateTime appointmentTime){
+
+       return appointments.stream()
+                .anyMatch(appointment -> appointment.getDate().isEqual(appointmentTime));
+
+    }
+
+    public static List<Administrator> getAdministrators() {
+        return administrators;
+    }
+
+    public static List<Pet> getPets() {
+        return pets;
+    }
+
+    public static List<PetOwner> getPetOwners() {
+        return petOwners;
+    }
+
+    public static List<VeterinaryDoctor> getVeterinaryDoctors() {
+        return veterinaryDoctors;
+    }
 }
 
 

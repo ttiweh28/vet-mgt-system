@@ -2,29 +2,61 @@ package console;
 
 import data.Pet;
 import data.PetOwner;
+import service.PetOwnerService;
+import service.PetService;
 import service.impl.PetOwnerServiceImpl;
+import service.impl.PetServiceImpl;
 
 import java.util.Scanner;
 
+/**
+ * The type Pet console.
+ */
 public class PetConsole {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void addPet(PetOwner owner, PetOwnerServiceImpl service) {
-        System.out.print("Enter Pet ID: ");
-        int petId = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-        System.out.print("Enter Pet Name: ");
-        String petName = scanner.nextLine();
-        System.out.print("Enter Pet Age: ");
+
+    public static void addPet() {
+
+        PetOwnerService petOwnerService = new PetOwnerServiceImpl();
+
+        PetOwner petOwner = null;
+
+        while (true) {
+            ConsoleUtil.displayColoredMessage("Enter Owner Id: ", ConsoleUtil.BLUE);
+            int ownerId = ConsoleUtil.getScanner().nextInt();
+
+            petOwner = petOwnerService.getPetOwner(ownerId);
+            if (petOwner == null) {
+                ConsoleUtil.displayColoredMessageWithNewLine("Invalid Owner Id, couldn't find Owner by that Id, Please try again", ConsoleUtil.RED);
+            } else {
+                break;
+            }
+        }
+
+        ConsoleUtil.displayColoredMessage("Enter Pet Name: ", ConsoleUtil.BLUE);
+        String petName = ConsoleUtil.getScanner().nextLine();
+        ConsoleUtil.displayColoredMessage("Enter Pet Age: ", ConsoleUtil.BLUE);
         int petAge = scanner.nextInt();
 
-        Pet newPet = new Pet(petId, petName, petAge);
-        owner.getPets().add(newPet);
+        PetService petService = new PetServiceImpl();
+        petService.addPet(petName, petAge);
+
+        Pet newPet = new Pet(petName, petAge);
+        petOwner.getPets().add(newPet);
+
         System.out.println("Pet added successfully.");
     }
 
+    /**
+     * View pets.
+     *
+     * @param owner the owner
+     */
     public static void viewPets(PetOwner owner) {
         System.out.println("Owner Pets: " + owner.getPets());
     }
+
+
 }

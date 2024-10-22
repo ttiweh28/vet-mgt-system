@@ -1,6 +1,13 @@
 package console;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ConsoleUtil {
 
@@ -13,11 +20,32 @@ public class ConsoleUtil {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
-    public static Scanner scanner = new Scanner(System.in);
+    // BLACK
+    public static final String WHITE_BACKGROUND = "\033[47m";   // WHITE BACKGROUND
+
+
+
+    // Regular expression for validating email
+    private static final String EMAIL_REGEX = "^[\\w-\\.]+@[\\w-]+\\.[a-zA-Z]{2,}$";
+
+    public static boolean isValidEmail(String email) {
+        // Compile regular expression
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        // Match email with the pattern
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    // Method to display a message in a specific color
+    public static void displayColoredMessageWithNewLine(String message, String color) {
+        System.out.println(color + message + RESET);
+//        System.out.println(WHITE_BACKGROUND + color + message + RESET);
+    }
 
     // Method to display a message in a specific color
     public static void displayColoredMessage(String message, String color) {
-        System.out.println(color + message + RESET);
+        System.out.print(color + message + RESET);
+//        System.out.println(WHITE_BACKGROUND + color + message + RESET);
     }
 
     // Erase the current line and return to the beginning
@@ -32,5 +60,63 @@ public class ConsoleUtil {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
+
+    public static Scanner getScanner(){
+        System.out.print(BLUE);
+        Scanner scanner = new Scanner(System.in);
+
+        return scanner;
+
+    }
+
+    public static LocalDate DateValidation(String dateText){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+        try {
+            // Parse the date string into a LocalDate
+            LocalDate date = LocalDate.parse(dateText, formatter);
+
+            return date;
+        } catch (DateTimeParseException e) {
+            displayColoredMessageWithNewLine("Invalid date format, please use MM/dd/yyyy", RED);
+        }
+        return null;
+
+    }
+
+
+    public static LocalTime timeValidation(String timeText){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+
+        try {
+            // Parse the date string into a LocalDate
+            LocalTime date = LocalTime.parse(timeText.toUpperCase(), formatter);
+
+            return date;
+        } catch (DateTimeParseException e) {
+            displayColoredMessageWithNewLine("Invalid time format, please use hh:mm am/pm", RED);
+        }
+        return null;
+
+    }
+
+    public static LocalDateTime DateTimeValidation(String timeText){
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+
+        try {
+            // Parse the date string into a LocalDate
+            LocalDateTime date = LocalDateTime.parse(timeText, formatter);
+
+            return date;
+        } catch (DateTimeParseException e) {
+            displayColoredMessageWithNewLine("Invalid date time format", RED);
+        }
+        return null;
+
+    }
+
 
 }

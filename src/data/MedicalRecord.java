@@ -55,11 +55,10 @@ public class MedicalRecord {
 
     @Override
     public String toString() {
-        return "MedicalRecords{" +
-                "recordID=" + recordID +
-                ", date=" + date +
-                ", treatment='" + treatment + '\'' +
-                ", pet=" + pet +
+        return "MedicalRecords:\n" +
+                "   recordID=" + recordID +
+                "\n  date=" + date +
+                "\n  treatment='" + treatment + '\n' +
                 '}';
     }
 }

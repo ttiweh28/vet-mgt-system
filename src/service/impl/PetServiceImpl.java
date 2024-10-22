@@ -1,12 +1,16 @@
 package service.impl;
 
 import data.Pet;
+import data.dao.Storage;
 import service.PetService;
 
+import java.util.List;
+
 public class PetServiceImpl implements PetService {
+
     @Override
-    public Pet createPet(Pet pet) {
-        return null;
+    public void addPet(String name, int age) {
+         Storage.add(new Pet(name, age));
     }
 
     @Override
@@ -22,5 +26,10 @@ public class PetServiceImpl implements PetService {
     @Override
     public boolean deletePet(int petId) {
         return false;
+    }
+
+    @Override
+    public List<Pet> getAllPets() {
+        return Storage.getPets();
     }
 }

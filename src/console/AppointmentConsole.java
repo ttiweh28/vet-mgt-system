@@ -2,26 +2,57 @@ package console;
 
 import data.Appointment;
 import data.PetOwner;
+import service.AppointmentService;
+import service.impl.AppointmentServiceImpl;
 import service.impl.PetOwnerServiceImpl;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Scanner;
 
 public class AppointmentConsole {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void createAppointment(PetOwner owner, PetOwnerServiceImpl service) {
-        System.out.print("Enter Appointment ID: ");
-        int appointmentId = scanner.nextInt();
-        scanner.nextLine(); // Consume newline
-        System.out.print("Enter Reason: ");
-        String reason = scanner.nextLine();
-        System.out.print("Enter Date (YYYY-MM-DD): ");
-        LocalDate date = LocalDate.parse(scanner.nextLine());
+    public static void scheduleAppointment() {
 
-        Appointment appointment = new Appointment(appointmentId, date, null, reason);
-        owner.getAppointments().add(appointment);
+        while (true) {
+            ConsoleUtil.displayColoredMessageWithNewLine("Enter appointment date (MM/dd/yyyy)", ConsoleUtil.BLUE);
+            String datee = ConsoleUtil.getScanner().nextLine();
+
+            LocalDate date = ConsoleUtil.DateValidation(datee);
+
+            if (date == null) {
+                scheduleAppointment();
+                return;
+            }
+
+            ConsoleUtil.displayColoredMessageWithNewLine("Enter appointment time (hh:mm am/pm)", ConsoleUtil.BLUE);
+            String appointmentTime = ConsoleUtil.getScanner().nextLine();
+
+            LocalTime time = ConsoleUtil.timeValidation(appointmentTime);
+
+            if (time == null) {
+                scheduleAppointment();
+                return;
+            }
+
+            LocalDateTime appointmentDate = date.atTime(time);
+
+            ConsoleUtil.displayColoredMessageWithNewLine("Appointment Reason", ConsoleUtil.BLUE);
+            String reason = ConsoleUtil.getScanner().nextLine();
+
+            AppointmentService appointmentService = new AppointmentServiceImpl();
+            Appointment appointment = appointmentService.scheduleAppointment(appointmentDate, reason);
+
+            if (appointment == null) {
+                ConsoleUtil.displayColoredMessageWithNewLine("The selected Date is not Available, please select another Date/time", ConsoleUtil.RED);
+            }else{
+                break;
+            }
+        }
+
         System.out.println("Appointment created successfully.");
     }
 
