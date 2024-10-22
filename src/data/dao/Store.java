@@ -31,6 +31,33 @@ public final class Store {
         return medicalRecords;
     }
 
+    //retrieve a medical record from a list of medical records using an id
+    public static String getMedicalRecord(int recordid){
+            return medicalRecords.stream()
+                    .filter(record -> record.getRecordID() == recordid)
+                    .findFirst()
+                    .map(record -> "Medical Record ID: " + record.getRecordID() +
+                            ", Date: " + record.getDate() +
+                            ", Treatment: " + record.getTreatment() +
+                            ", Pet: " + record.getPets().getPetName())
+                    .orElse("Medical record not found");
+        }
+
+    //retrieve a particular appointment from a list of appointments using an id
+    public static String getAppointment(int appointmentID){
+        return appointments.stream()
+                .filter(appointment -> appointment.getAppointmentID() == appointmentID)
+                .findFirst()
+                .map(appointment -> "Appointment: " + appointment.getAppointmentID() +
+                        ", Date: " + appointment.getDate() +
+                        ", Time: " + appointment.getTime() +
+                        ", Reason: " + appointment.getReason() +
+                        ", for : " + (appointment.getPetOwner() != null ? appointment.getPetOwner().getLastName()+" "+appointment.getPetOwner().getFirstName() : "No Owner Assigned"))  // Accessing getName() from User
+        .orElse("Appointment not found");
+    }
 
 
-}
+    }
+
+
+

@@ -17,6 +17,14 @@ public class Appointment {
         this.reason = reason;
     }
 
+    public PetOwner getPetOwner() {
+        return petOwner;
+    }
+
+    public void setPetOwner(PetOwner petOwner) {
+        this.petOwner = petOwner;
+    }
+
     public int getAppointmentID() {
         return appointmentID;
     }
