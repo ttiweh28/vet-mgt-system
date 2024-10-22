@@ -7,12 +7,12 @@ import java.util.Objects;
 public class Pet {
 
     private int petID;
-    private int petName;
+    private String petName;
     private int petAge;
     private List<MedicalRecord> medicalRecordList;
     private List<Appointment> appointment;
 
-    public Pet(int petID, int petName, int petAge, int recordID) {
+    public Pet(int petID, String petName, int petAge) {
         this.petID = petID;
         this.petName = petName;
         this.petAge = petAge;
@@ -69,7 +69,7 @@ public class Pet {
         return petAge;
     }
 
-    public int getPetName() {
+    public String getPetName() {
         return petName;
     }
 

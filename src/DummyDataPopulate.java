@@ -61,11 +61,11 @@ public class DummyDataPopulate {
     private static List<Pet> populatePetsForOwner(PetOwner owner) {
         List<Pet> pets = new ArrayList<>();
 
-        Pet pet1 = new Pet(1, 1, 3, 1001);
+        Pet pet1 = new Pet(1, "Golgy", 3);
         pet1.addMedicalRecords(new MedicalRecord(1, LocalDate.now().minusMonths(3), "Vaccination", pet1));
         pet1.addMedicalRecords(new MedicalRecord(2, LocalDate.now().minusMonths(1), "Check-up", pet1));
 
-        Pet pet2 = new Pet(2, 2, 5, 1002);
+        Pet pet2 = new Pet(2, "Helly", 2);
         pet2.addMedicalRecords(new MedicalRecord(3, LocalDate.now().minusMonths(5), "Surgery", pet2));
 
         pets.add(pet1);
