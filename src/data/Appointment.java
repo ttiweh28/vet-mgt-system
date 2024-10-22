@@ -59,14 +59,14 @@ public class Appointment {
 
     @Override
     public String toString() {
-            return "Appointment ID: " + appointmentID +
-                    ", Date: " + date +
-                    ", Time: " + time +
-                    ", Reason: " + reason +
-                    ", Pet Owner: " + (petOwner != null
-                    ? petOwner.getFirstName() + " " + petOwner.getLastName()
-                    : "No Owner Assigned");
-        }
-
+        return "Appointment ID: " + appointmentID +
+                ", Date: " + date +
+                ", Time: " + time +
+                ", Reason: " + reason +
+                ", Pet Owner: " + (petOwner != null
+                ? petOwner.getFirstName() + " " + petOwner.getLastName()
+                : "No Owner Assigned");
     }
+
+}
 

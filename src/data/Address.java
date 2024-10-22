@@ -6,6 +6,13 @@ public class Address {
     private String street;
     private String zipCode;
 
+    public Address(String city, String state, String street, String zipCode) {
+        this.city = city;
+        this.state = state;
+        this.street = street;
+        this.zipCode = zipCode;
+    }
+
     public Address(String city) {
         this.city = city;
     }

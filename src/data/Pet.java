@@ -9,22 +9,22 @@ public class Pet {
     private int petID;
     private int petName;
     private int petAge;
-    private List<MedicalRecords> medicalRecordsList;
+    private List<MedicalRecord> medicalRecordList;
     private List<Appointment> appointment;
 
     public Pet(int petID, int petName, int petAge, int recordID) {
         this.petID = petID;
         this.petName = petName;
         this.petAge = petAge;
-        this.medicalRecordsList = new ArrayList<>();
+        this.medicalRecordList = new ArrayList<>();
     }
 
     public Pet(int petID) {
         this.petID = petID;
     }
 
-    public void addMedicalRecords(MedicalRecords medicalRecords) {
-        medicalRecordsList.add(medicalRecords);
+    public void addMedicalRecords(MedicalRecord medicalRecord) {
+        medicalRecordList.add(medicalRecord);
     }
 
     public int getPetID() {
@@ -61,8 +61,8 @@ public class Pet {
         return appointment;
     }
 
-    public List<MedicalRecords> getMedicalRecordsList() {
-        return medicalRecordsList;
+    public List<MedicalRecord> getMedicalRecordsList() {
+        return medicalRecordList;
     }
 
     public int getPetAge() {
