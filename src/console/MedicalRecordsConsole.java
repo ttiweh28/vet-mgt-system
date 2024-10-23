@@ -29,7 +29,9 @@ public class MedicalRecordsConsole {
         if (input > owner.getPets().size() || input < 0) {
             ConsoleUtil.displayError("Invalid choice");
         } else {
-            ConsoleUtil.displayColoredMessageWithNewLine(owner.getPets().get(input - 1).getMedicalRecordsList().toString(), ConsoleUtil.BLUE);
+
+            owner.getPets().get(input - 1).getMedicalRecordsList()
+                    .stream().forEach(md ->ConsoleUtil.displaySuccessMessage(md.toString()));
         }
 
     }

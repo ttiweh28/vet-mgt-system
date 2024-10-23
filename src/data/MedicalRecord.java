@@ -56,9 +56,8 @@ public class MedicalRecord {
     @Override
     public String toString() {
         return "MedicalRecords:\n" +
-                "   recordID=" + recordID +
-                "\n  date=" + date +
-                "\n  treatment='" + treatment + '\n' +
-                '}';
+                "recordID : " + recordID +
+                "\ndate : " + date +
+                "\ntreatment :" + treatment + '\n';
     }
 }
