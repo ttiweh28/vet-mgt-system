@@ -60,7 +60,10 @@ public class AppointmentConsole {
 
     public static void viewAppointments(PetOwner owner) {
         if (owner !=null && owner.getAppointments() != null && owner.getAppointments().size() > 0)
-            ConsoleUtil.displayChoiceText("Owner Appointments: " + owner.getAppointments());
+
+            owner.getAppointments().stream()
+                            .forEach(md->ConsoleUtil.displaySuccessMessage(md.toString()));
+
         else
             ConsoleUtil.displayError(" Pet owner doesn't have appointment");
 

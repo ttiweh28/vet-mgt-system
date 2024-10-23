@@ -99,6 +99,8 @@ public class DummyDataPopulate {
         app1.setPetOwner(petOwners.get(0));
         app2.setPetOwner(petOwners.get(0));
 
+        petOwners.get(0).getAppointments().add(app1);
+        petOwners.get(0).getAppointments().add(app2);
         appointments.add(app1);
         appointments.add(app2);
 
