@@ -93,8 +93,9 @@ public class DummyDataPopulate {
     public static List<Appointment> populateAppointments() {
         List<Appointment> appointments = new ArrayList<>();
 
-        Appointment app1 = new Appointment(LocalDateTime.now().plusDays(3), "null", petOwners.get(0));
-        Appointment app2 = new Appointment(LocalDateTime.now().plusDays(7), "null", petOwners.get(0));
+
+        Appointment app1 = new Appointment(LocalDateTime.now().plusDays(3), "Mouth Sores", petOwners.get(0));
+        Appointment app2 = new Appointment(LocalDateTime.now().plusDays(7), "Restlessness", petOwners.get(0));
 
         app1.setPetOwner(petOwners.get(0));
         app2.setPetOwner(petOwners.get(0));

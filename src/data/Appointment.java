@@ -1,5 +1,7 @@
 package data;
 
+import console.ConsoleUtil;
+
 import java.time.LocalDateTime;
 import java.util.Random;
 
@@ -42,14 +44,29 @@ public class Appointment {
     }
 
     @Override
+//    public String toString() {
+//        return "Appointment ID: " + appointmentID +
+//                ", Date: " + date +
+//                ", Reason: " + reason +
+//                ", Pet Owner: " + (petOwner != null
+//                ? petOwner.getFirstName() + " " + petOwner.getLastName()
+//                : "No Owner Assigned");
+//    }
     public String toString() {
-        return "Appointment ID: " + appointmentID +
-                ", Date: " + date +
-                ", Reason: " + reason +
-                ", Pet Owner: " + (petOwner != null
+        String ownerInfo = (petOwner != null)
                 ? petOwner.getFirstName() + " " + petOwner.getLastName()
-                : "No Owner Assigned");
+                : "No Owner Assigned";
+        ConsoleUtil.displaySuccessMessage("APPOINTMENT DETAILS:");
+        return String.format(
+                "+-----------------+----------------------+---------------------+--------------------------+\n" +
+                        "| APPOINTMENT ID  | DATE                 | REASON              | PET OWNER                |\n" +
+                        "+-----------------+----------------------+---------------------+--------------------------+\n" +
+                        "| %-15s | %-20s | %-20s | %-24s |\n" +
+                        "+-----------------+----------------------+---------------------+--------------------------+",
+                appointmentID, date, reason, ownerInfo
+        );
     }
+
 
     public LocalDateTime getDate() {
         return date;

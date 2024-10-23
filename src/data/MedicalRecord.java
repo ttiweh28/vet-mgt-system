@@ -1,5 +1,7 @@
 package data;
 
+import console.ConsoleUtil;
+
 import java.time.LocalDate;
 
 public class MedicalRecord {
@@ -54,10 +56,24 @@ public class MedicalRecord {
     }
 
     @Override
+//    public String toString() {
+//        return "MedicalRecords:\n" +
+//                "RecordID : " + recordID +
+//                "\nDate : " + date +
+//                "\nTreatment :" + treatment + '\n';
+//    }
     public String toString() {
-        return "MedicalRecords:\n" +
-                "RecordID : " + recordID +
-                "\nDate : " + date +
-                "\nTreatment :" + treatment + '\n';
+        ConsoleUtil.displaySuccessMessage("Medical Record:");
+        return String.format(
+                        "+----------------+------------------+\n" +
+                        "| Record ID      | %s                |\n" +
+                        "+----------------+------------------+\n" +
+                        "| Date           | %s                |\n" +
+                        "+----------------+------------------+\n" +
+                        "| Treatment      | %s                |\n" +
+                        "+----------------+------------------+",
+                recordID, date, treatment
+        );
     }
+
 }
