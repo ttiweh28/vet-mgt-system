@@ -1,3 +1,4 @@
+import console.LoadingPage;
 import console.Login;
 
 import java.util.Scanner;
@@ -8,19 +9,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        String banner = "*******************************************";
+        String welcome = "   Welcome to Vet Management System   ";
+
+        System.out.println(banner);
+        System.out.println(welcome);
+        System.out.println(banner);
 
 //        LoadingPage.showLoadingPage("Vet Management System", 2);
 
-//        ConsoleUtil.displayColoredMessageWithNewLine("Load DummyData?(Y/N)", ConsoleUtil.GREEN);
-//
-//        String loadData = ConsoleUtil.getScanner().nextLine();
-//
-//        if (loadData.equalsIgnoreCase("y")) {
         DummyDataPopulate.populateAll();
-//        }
 
         Login.userLogin();
     }
-
-
 }

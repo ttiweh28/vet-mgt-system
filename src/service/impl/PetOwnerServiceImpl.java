@@ -32,7 +32,7 @@ public class PetOwnerServiceImpl extends UserServiceImpl implements PetOwnerServ
 
     @Override
     public List<Appointment> addAppointments(PetOwner petOwner, Appointment appointment) {
-         petOwner.getAppointments().add(appointment);
-         return petOwner.getAppointments();
+        petOwner.getAppointments().add(appointment);
+        return petOwner.getAppointments();
     }
 }

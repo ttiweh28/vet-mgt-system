@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import static console.ConsoleUtil.*;
+
 public class Login {
 
     public static User loggedInUser = null;
@@ -17,15 +19,15 @@ public class Login {
 
     public static void userLogin() {
 
-        ConsoleUtil.displayColoredMessageWithNewLine("\n1. Admin Login", ConsoleUtil.BLUE);
-        ConsoleUtil.displayColoredMessageWithNewLine("\n2. Pet Owner Login", ConsoleUtil.BLUE);
-        ConsoleUtil.displayColoredMessageWithNewLine("\n3. Veterinary Doctor Login", ConsoleUtil.BLUE);
-        ConsoleUtil.displayColoredMessageWithNewLine("\n4. Exit", ConsoleUtil.BLUE);
+        displayColoredMessageWithNewLine("\n1. Admin Login", BLUE);
+        displayColoredMessageWithNewLine("\n2. Pet Owner Login", BLUE);
+        displayColoredMessageWithNewLine("\n3. Veterinary Doctor Login", BLUE);
+        displayColoredMessageWithNewLine("\n4. Exit", BLUE);
         System.out.println();
 
         while (true) {
 
-            int choice = ConsoleUtil.intInputValidator("Enter Choice: ");
+            int choice = intInputValidator("Enter Choice: ");
 
             switch (choice) {
                 case 1:
@@ -45,7 +47,7 @@ public class Login {
                     System.exit(0);
                     break;
                 default:
-                    ConsoleUtil.displayError("Invalid choice. Please try again.");
+                    displayError("Invalid choice. Please try again.");
             }
         }
     }
@@ -55,15 +57,15 @@ public class Login {
         while (true) {
             switch (userType) {
                 case PET_OWNER -> {
-                    ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayChoiceText("Choose service: ");
-                    ConsoleUtil.displayOptionsText("1. Schedule an appointment");
-                    ConsoleUtil.displayOptionsText("2. View appointment");
-                    ConsoleUtil.displayOptionsText("3. View pets medical history");
-                    ConsoleUtil.displayOptionsText("4. Logout");
-                    ConsoleUtil.displayOptionsText("5. Exit");
+                    clearConsole();
+                    displayChoiceText("Choose service: ");
+                    displayOptionsText("1. Schedule an appointment");
+                    displayOptionsText("2. View appointment");
+                    displayOptionsText("3. View pets medical history");
+                    displayOptionsText("4. Logout");
+                    displayOptionsText("5. Exit");
 
-                    int input = ConsoleUtil.intInputValidator("Enter number: ");
+                    int input = intInputValidator("Enter number: ");
 
                     if (input == 1) {
                         AppointmentConsole.scheduleAppointment();
@@ -78,12 +80,12 @@ public class Login {
                     }
                 }
                 case ADMINISTRATOR -> {
-                    ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayChoiceText("Choose service: ");
-                    ConsoleUtil.displayOptionsText("1. Add pet");
-                    ConsoleUtil.displayOptionsText("2. Logout");
-                    ConsoleUtil.displayOptionsText("3. Exit");
-                    int input = ConsoleUtil.intInputValidator("Enter number: ");
+                    clearConsole();
+                    displayChoiceText("Choose service: ");
+                    displayOptionsText("1. Add pet");
+                    displayOptionsText("2. Logout");
+                    displayOptionsText("3. Exit");
+                    int input = intInputValidator("Enter number: ");
 
                     if (input == 1) {
                         PetConsole.addPet();
@@ -99,12 +101,12 @@ public class Login {
 
                 }
                 case VET_DOCTOR -> {
-                    ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayChoiceText("Choose service: ");
-                    ConsoleUtil.displayOptionsText("1. Update Medical records");
-                    ConsoleUtil.displayOptionsText("2. Logout");
-                    ConsoleUtil.displayOptionsText("3. Exit");
-                    int input = ConsoleUtil.intInputValidator("Enter number: ");
+                    clearConsole();
+                    displayChoiceText("Choose service: ");
+                    displayOptionsText("1. Update Medical records");
+                    displayOptionsText("2. Logout");
+                    displayOptionsText("3. Exit");
+                    int input = intInputValidator("Enter number: ");
 
                     if (input == 1) {
                         MedicalRecordsConsole.updateMedicalRecord();
@@ -125,7 +127,7 @@ public class Login {
             Map<String, String> info = loginForm();
             User user = userService.login(info.get("email"), info.get("password"), userType);
             if (user == null) {
-                ConsoleUtil.displayError("Invalid email/password, please try again");
+                displayError("Invalid email/password, please try again");
             } else {
                 return user;
             }
@@ -137,18 +139,18 @@ public class Login {
         Map<String, String> unamePassword = new HashMap<>();
         String email = null;
         while (true) {
-            ConsoleUtil.displayColoredMessageWithNewLine("Enter email: ", ConsoleUtil.BLUE);
+            displayColoredMessageWithNewLine("Enter email: ", BLUE);
             email = new Scanner(System.in).nextLine();
-            boolean validEmail = ConsoleUtil.isValidEmail(email);
+            boolean validEmail = isValidEmail(email);
             if (!validEmail) {
-                ConsoleUtil.displayError("Invalid email format, please enter a valid email");
+                displayError("Invalid email format, please enter a valid email");
             } else {
                 break;
             }
         }
         unamePassword.put("email", email);
-        ConsoleUtil.displayColoredMessageWithNewLine("Enter Password", ConsoleUtil.BLUE);
-        String pword = ConsoleUtil.getScanner().nextLine();
+        displayColoredMessageWithNewLine("Enter Password", BLUE);
+        String pword = getScanner().nextLine();
         unamePassword.put("password", pword);
 
         return unamePassword;

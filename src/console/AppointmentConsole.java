@@ -23,7 +23,7 @@ public class AppointmentConsole {
             ConsoleUtil.displayColoredMessageWithNewLine("Enter appointment date (MM/dd/yyyy)", ConsoleUtil.BLUE);
             while (true) {
                 String datee = ConsoleUtil.getScanner().nextLine();
-                date = ConsoleUtil.DateValidation(datee);
+                date = ConsoleUtil.dateValidation(datee);
                 if (date != null) {
                     break;
                 }
@@ -59,7 +59,7 @@ public class AppointmentConsole {
     }
 
     public static void viewAppointments(PetOwner owner) {
-        if (owner !=null && owner.getAppointments() != null && owner.getAppointments().size() > 0)
+        if (owner != null && owner.getAppointments() != null && owner.getAppointments().size() > 0)
 
             owner.getAppointments().stream()
                             .forEach(md->ConsoleUtil.displaySuccessMessage(md.toString()));

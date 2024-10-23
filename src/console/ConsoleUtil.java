@@ -9,6 +9,9 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * The type Console util.
+ */
 public class ConsoleUtil {
 
     public static final String RESET = "\u001B[0m"; // Resets the color
@@ -88,7 +91,7 @@ public class ConsoleUtil {
 
     }
 
-    public static LocalDate DateValidation(String dateText) {
+    public static LocalDate dateValidation(String dateText) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 
@@ -103,7 +106,6 @@ public class ConsoleUtil {
         return null;
 
     }
-
 
     public static LocalTime timeValidation(String timeText) {
 
@@ -121,7 +123,7 @@ public class ConsoleUtil {
 
     }
 
-    public static LocalDateTime DateTimeValidation(String timeText) {
+    public static LocalDateTime dateTimeValidation(String timeText) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
 

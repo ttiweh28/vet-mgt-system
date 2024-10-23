@@ -1,6 +1,5 @@
 package service;
 
-import console.AppointmentConsole;
 import data.Appointment;
 import data.Pet;
 import data.PetOwner;
