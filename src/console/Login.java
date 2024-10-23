@@ -39,6 +39,7 @@ public class Login {
                     break;
                 case 3:
                     loggedInUser = validateUserLogin(UserType.VET_DOCTOR);
+                    displayOptions(UserType.VET_DOCTOR);
                     break;
                 case 4:
                     System.out.println("Exiting the system.");
@@ -84,6 +85,10 @@ public class Login {
                 int input = ConsoleUtil.getScanner().nextInt();
 
                 if (input == 1) {
+                    MedicalRecordsConsole.updateMedicalRecord();  // Call the method to update medical record
+                }
+                else {
+                    ConsoleUtil.displayColoredMessageWithNewLine("Invalid choice. Please try again.", ConsoleUtil.RED);
 
                 }
 
