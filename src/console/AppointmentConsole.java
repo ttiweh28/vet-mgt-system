@@ -17,26 +17,25 @@ public class AppointmentConsole {
     public static void scheduleAppointment() {
 
         while (true) {
+            LocalDate date = null;
             ConsoleUtil.displayColoredMessageWithNewLine("Enter appointment date (MM/dd/yyyy)", ConsoleUtil.BLUE);
-            String datee = ConsoleUtil.getScanner().nextLine();
-
-            LocalDate date = ConsoleUtil.DateValidation(datee);
-
-            if (date == null) {
-                scheduleAppointment();
-                return;
+            while (true) {
+                String datee = ConsoleUtil.getScanner().nextLine();
+                date = ConsoleUtil.DateValidation(datee);
+                if (date != null) {
+                    break;
+                }
             }
 
             ConsoleUtil.displayColoredMessageWithNewLine("Enter appointment time (hh:mm am/pm)", ConsoleUtil.BLUE);
-            String appointmentTime = ConsoleUtil.getScanner().nextLine();
-
-            LocalTime time = ConsoleUtil.timeValidation(appointmentTime);
-
-            if (time == null) {
-                scheduleAppointment();
-                return;
+            LocalTime time = null;
+            while (true) {
+                String appointmentTime = ConsoleUtil.getScanner().nextLine();
+                time = ConsoleUtil.timeValidation(appointmentTime);
+                if (time != null) {
+                    break;
+                }
             }
-
             LocalDateTime appointmentDate = date.atTime(time);
 
             ConsoleUtil.displayColoredMessageWithNewLine("Appointment Reason", ConsoleUtil.BLUE);
@@ -46,12 +45,11 @@ public class AppointmentConsole {
             Appointment appointment = appointmentService.scheduleAppointment(appointmentDate, reason);
 
             if (appointment == null) {
-                ConsoleUtil.displayError("The selected Date is not Available, please select another Date/time");
+                ConsoleUtil.displayError("The selected date is not Available, please select another Date/time");
             } else {
                 break;
             }
         }
-
         ConsoleUtil.displaySuccessMessage("Appointment created successfully.");
     }
 

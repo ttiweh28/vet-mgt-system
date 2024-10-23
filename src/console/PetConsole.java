@@ -24,17 +24,18 @@ public class PetConsole {
         PetOwner petOwner = null;
 
         while (true) {
-            int ownerId = ConsoleUtil.intInputValidator("Enter Owner Id: ");
+            int ownerId = ConsoleUtil.intInputValidator("Enter pet owner Id: ");
 
             petOwner = petOwnerService.getPetOwner(ownerId);
             if (petOwner == null) {
-                ConsoleUtil.displayError("Invalid Owner Id, couldn't find Owner by that Id, Please try again");
+                ConsoleUtil.displayError("Invalid pet owner Id, couldn't find pet owner by that Id, Please try again");
             } else {
                 break;
             }
         }
 
-        ConsoleUtil.displayColoredMessage("Enter Pet Name: ", ConsoleUtil.BLUE);
+        ConsoleUtil.displayChoiceText("Pet owner name: " + petOwner.getFirstName() + " " + petOwner.getLastName());
+        ConsoleUtil.displayChoiceText("Enter Pet Name: ");
         String petName = ConsoleUtil.getScanner().nextLine();
         int petAge = ConsoleUtil.intInputValidator("Enter Pet Age: ");
 

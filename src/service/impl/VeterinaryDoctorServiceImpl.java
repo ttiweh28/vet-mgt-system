@@ -1,7 +1,8 @@
-package service;
+package service.impl;
 
 import data.Appointment;
 import data.VeterinaryDoctor;
+import service.VeterinaryDoctorService;
 
 public class VeterinaryDoctorServiceImpl implements VeterinaryDoctorService {
     @Override

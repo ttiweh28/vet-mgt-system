@@ -57,11 +57,11 @@ public class Login {
                 case PET_OWNER -> {
                     ConsoleUtil.clearConsole();
                     ConsoleUtil.displayChoiceText("Choose service: ");
-                    ConsoleUtil.displayOptionsText("1, Schedule an appointment");
-                    ConsoleUtil.displayOptionsText("2, View appointment");
-                    ConsoleUtil.displayOptionsText("3, View pets medical history");
-                    ConsoleUtil.displayOptionsText("4, Logout");
-                    ConsoleUtil.displayOptionsText("5, Exit");
+                    ConsoleUtil.displayOptionsText("1. Schedule an appointment");
+                    ConsoleUtil.displayOptionsText("2. View appointment");
+                    ConsoleUtil.displayOptionsText("3. View pets medical history");
+                    ConsoleUtil.displayOptionsText("4. Logout");
+                    ConsoleUtil.displayOptionsText("5. Exit");
 
                     int input = ConsoleUtil.intInputValidator("Enter number: ");
 
@@ -88,6 +88,10 @@ public class Login {
                     if (input == 1) {
                         PetConsole.addPet();
                     } else if (input == 2) {
+                        // Clear the console using ANSI escape code
+                        for (int i = 0; i < 100; i++) {
+                            System.out.println();
+                        }
                         userLogin();
                     } else if (input == 3) {
                         System.exit(0);
