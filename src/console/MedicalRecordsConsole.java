@@ -47,7 +47,7 @@ public class MedicalRecordsConsole {
                     return x + 1;
                 }, Integer::sum);
 
-        int petInput = ConsoleUtil.intInputValidator("Choice a pet: ");
+        int petInput = ConsoleUtil.intInputValidator("Choose a pet: ");
 
 
         if (petInput > petService.getAllPets().size() || petInput <= 0) {
@@ -62,7 +62,7 @@ public class MedicalRecordsConsole {
         // Display the medical records for the selected pet
         ConsoleUtil.displayColoredMessageWithNewLine("Medical records: ", ConsoleUtil.BLUE);
         selectedPet.getMedicalRecordsList().stream().map(record ->
-                        "Record ID: " + record.getRecordID() + ", Treatment: " + record.getTreatment())
+                        "Record ID: " + record.getRecordID() + ". Treatment: " + record.getTreatment())
                 .forEach(name -> ConsoleUtil.displayColoredMessageWithNewLine(name, ConsoleUtil.BLUE));
 
         // Find the medical record to update
@@ -71,7 +71,7 @@ public class MedicalRecordsConsole {
         MedicalRecord medicalRecord = null;
 
         while (true) {
-            int recordInput = ConsoleUtil.intInputValidator("Medical record ID: ");
+            int recordInput = ConsoleUtil.intInputValidator("Enter medical record ID: ");
             medicalRecord = medicalRecordService.getRecordById(recordInput);
 
             if (medicalRecord == null) {
@@ -85,7 +85,7 @@ public class MedicalRecordsConsole {
         }
 
         // Get the new treatment or date from the veterinarian
-        ConsoleUtil.displayChoiceText("Enter new treatment: ");
+        ConsoleUtil.displayChoiceText("Update treatment information: ");
         String newTreatment = ConsoleUtil.getScanner().nextLine();
 
         boolean updated = medicalRecordService.updateRecord(medicalRecord, newTreatment);

@@ -55,7 +55,7 @@ public class ConsoleUtil {
 
     // Method to display a message in a specific color
     public static void displaySuccessMessage(String message) {
-        System.out.println(WHITE + message + RESET);
+        System.out.println(PURPLE + message + RESET);
     }
 
     // Method to display a message in a specific color
