@@ -53,47 +53,64 @@ public class Login {
 
     private static void displayOptions(UserType userType) {
 
-        switch (userType) {
-            case PET_OWNER -> {
-                ConsoleUtil.clearConsole();
-                ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
-                ConsoleUtil.displayColoredMessageWithNewLine("1, Schedule an appointment", ConsoleUtil.BLUE);
-                ConsoleUtil.displayColoredMessageWithNewLine("2, View pets medical history", ConsoleUtil.BLUE);
-                int input = ConsoleUtil.getScanner().nextInt();
+        while (true) {
+            switch (userType) {
+                case PET_OWNER -> {
+                    ConsoleUtil.clearConsole();
+                    ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("1, Schedule an appointment", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("2, View pets medical history", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("3, Logout", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("4, Exit", ConsoleUtil.BLUE);
+                    int input = ConsoleUtil.getScanner().nextInt();
 
-                if (input == 1) {
-                    AppointmentConsole.scheduleAppointment();
-                } else if (input == 2) {
-                    MedicalRecordsConsole.viewMedicalRecords();
+                    if (input == 1) {
+                        AppointmentConsole.scheduleAppointment();
+                    } else if (input == 2) {
+                        MedicalRecordsConsole.viewMedicalRecords();
+                    }else if (input == 3) {
+                       userLogin();
+                    }else if (input == 4) {
+                       System.exit(0);
+                    }
                 }
+                case ADMINISTRATOR -> {
+                    ConsoleUtil.clearConsole();
+                    ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("1. Add pet", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("2, Logout", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("3, Exit", ConsoleUtil.BLUE);
+                    int input = ConsoleUtil.getScanner().nextInt();
+
+                    if (input == 1) {
+                        PetConsole.addPet();
+                    }
+                    else if (input == 2) {
+                        userLogin();
+                    }else if (input == 3) {
+                        System.exit(0);
+                    }
+
+                }
+                case VET_DOCTOR -> {
+                    ConsoleUtil.clearConsole();
+                    ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("1. Update Medical records", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("2, Logout", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayColoredMessageWithNewLine("3, Exit", ConsoleUtil.BLUE);
+                    int input = ConsoleUtil.getScanner().nextInt();
+
+                    if (input == 1) {
+
+                    } else if (input == 2) {
+                        userLogin();
+                    }else if (input == 3) {
+                        System.exit(0);
+                    }
+
+                }
+
             }
-            case ADMINISTRATOR -> {
-                ConsoleUtil.clearConsole();
-                ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
-                ConsoleUtil.displayColoredMessageWithNewLine("1. Add pet", ConsoleUtil.BLUE);
-                int input = ConsoleUtil.getScanner().nextInt();
-
-                if (input == 1) {
-                    PetConsole.addPet();
-                }
-
-            }
-            case VET_DOCTOR -> {
-                ConsoleUtil.clearConsole();
-                ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
-                ConsoleUtil.displayColoredMessageWithNewLine("1. Update Medical records", ConsoleUtil.BLUE);
-                int input = ConsoleUtil.getScanner().nextInt();
-
-                if (input == 1) {
-                    MedicalRecordsConsole.updateMedicalRecord();  // Call the method to update medical record
-                }
-                else {
-                    ConsoleUtil.displayColoredMessageWithNewLine("Invalid choice. Please try again.", ConsoleUtil.RED);
-
-                }
-
-            }
-
         }
     }
 

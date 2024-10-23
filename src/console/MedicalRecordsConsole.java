@@ -30,16 +30,12 @@ public class MedicalRecordsConsole {
                     return x;
                 }, (x, y) -> x + y);
 
-        while (true) {
+        int input = ConsoleUtil.getScanner().nextInt();
 
-            int input = ConsoleUtil.getScanner().nextInt();
-
-            if (input > owner.getPets().size() || input < 0) {
-                ConsoleUtil.displayColoredMessageWithNewLine("Invalid choice", ConsoleUtil.RED);
-            } else {
-                ConsoleUtil.displayColoredMessageWithNewLine(owner.getPets().get(input - 1).getMedicalRecordsList().toString(), ConsoleUtil.BLUE);
-            }
-
+        if (input > owner.getPets().size() || input < 0) {
+            ConsoleUtil.displayColoredMessageWithNewLine("Invalid choice", ConsoleUtil.RED);
+        } else {
+            ConsoleUtil.displayColoredMessageWithNewLine(owner.getPets().get(input - 1).getMedicalRecordsList().toString(), ConsoleUtil.BLUE);
         }
 
     }
