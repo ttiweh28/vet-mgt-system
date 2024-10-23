@@ -9,13 +9,13 @@ import java.util.List;
 
 public class MedicalRecordServiceImpl implements MedicalRecordService {
     @Override
-    public MedicalRecord createRecord(MedicalRecord record) {
-        return null;
+    public void createRecord(MedicalRecord record) {
+         Storage.add(record);
     }
 
     @Override
     public MedicalRecord getRecordById(int recordId) {
-        return null;
+        return Storage.getMedicalRecord(recordId);
     }
 
     @Override
@@ -24,18 +24,10 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
     }
 
     @Override
-    public boolean updateRecord(MedicalRecord record) {
-//
-//        MedicalRecord existingRecord = getRecordById(record.getRecordID());
-//        if (existingRecord != null) {
-//            // Update the fields of the existing record
-//            existingRecord.setDate(record.getDate());
-//            existingRecord.setTreatment(record.getTreatment());
-//            // Commit the changes to the data source
-//            Storage.add();// Save changes to database or list
-//            return true;
-//        }
-        return false;
+    public boolean updateRecord(MedicalRecord record, String treatment) {
+
+        record.setTreatment(treatment);
+        return true;
     }
 
     @Override

@@ -2,7 +2,7 @@ package console;
 
 import java.util.Scanner;
 
-public class VetenaryDoctorConsole {
+public class VeterinaryDoctorConsole {
 
     private static final Scanner scanner = new Scanner(System.in);
 

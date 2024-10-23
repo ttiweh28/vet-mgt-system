@@ -52,7 +52,7 @@ public class AppointmentConsole {
             }
         }
 
-        System.out.println("Appointment created successfully.");
+       ConsoleUtil.displaySuccessMessage("Appointment created successfully.");
     }
 
     public static void viewAppointments(PetOwner owner) {

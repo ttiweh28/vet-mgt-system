@@ -1,5 +1,7 @@
 import data.*;
 import data.dao.Storage;
+import service.MedicalRecordService;
+import service.impl.MedicalRecordServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -46,13 +48,23 @@ public class DummyDataPopulate {
 
     private static List<Pet> populatePets() {
 
+
         Pet pet1 = new Pet("Golgy", 3);
-        pet1.addMedicalRecords(new MedicalRecord(1, LocalDate.now().minusMonths(3), "Vaccination", pet1));
-        pet1.addMedicalRecords(new MedicalRecord(2, LocalDate.now().minusMonths(1), "Check-up", pet1));
 
         Pet pet2 = new Pet("Helly", 2);
-        pet2.addMedicalRecords(new MedicalRecord(3, LocalDate.now().minusMonths(5), "Surgery", pet2));
 
+        MedicalRecord medicalRecord1 = new MedicalRecord(1, LocalDate.now().minusMonths(3), "Vaccination", pet1);
+        MedicalRecord medicalRecord2 = new MedicalRecord(2, LocalDate.now().minusMonths(1), "Check-up", pet1);
+        MedicalRecord medicalRecord3 = new MedicalRecord(3, LocalDate.now().minusMonths(5), "Surgery", pet2);
+
+        pet1.addMedicalRecords(medicalRecord1);
+        pet1.addMedicalRecords(medicalRecord2);
+        pet2.addMedicalRecords(medicalRecord3);
+
+        MedicalRecordService medicalRecordService = new MedicalRecordServiceImpl();
+        medicalRecordService.createRecord(medicalRecord1);
+        medicalRecordService.createRecord(medicalRecord2);
+        medicalRecordService.createRecord(medicalRecord3);
 
         pets.add(pet1);
         pets.add(pet2);

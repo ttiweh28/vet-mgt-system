@@ -7,13 +7,13 @@ import java.util.List;
 
 public interface MedicalRecordService {
 
-    MedicalRecord createRecord(MedicalRecord record);
+    void createRecord(MedicalRecord record);
 
     MedicalRecord getRecordById(int recordId);
 
     List<MedicalRecord> getRecordsByPet(Pet pet);
 
-    boolean updateRecord(MedicalRecord record);
+    boolean updateRecord(MedicalRecord record, String treatment);
 
     boolean deleteRecord(int recordId);
 }

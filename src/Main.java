@@ -1,6 +1,8 @@
 import console.ConsoleUtil;
 import console.Login;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,15 +12,16 @@ public class Main {
     public static void main(String[] args) {
 
 
+
 //        LoadingPage.showLoadingPage("Vet Management System", 2);
 
-        ConsoleUtil.displayColoredMessageWithNewLine("Load DummyData?(Y/N)", ConsoleUtil.GREEN);
-
-        String loadData = ConsoleUtil.getScanner().nextLine();
-
-        if (loadData.equalsIgnoreCase("y")) {
+//        ConsoleUtil.displayColoredMessageWithNewLine("Load DummyData?(Y/N)", ConsoleUtil.GREEN);
+//
+//        String loadData = ConsoleUtil.getScanner().nextLine();
+//
+//        if (loadData.equalsIgnoreCase("y")) {
             DummyDataPopulate.populateAll();
-        }
+//        }
 
         Login.userLogin();
     }

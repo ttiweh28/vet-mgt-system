@@ -1,6 +1,7 @@
 package console;
 
 import data.User;
+import data.dao.Storage;
 import service.UserService;
 import service.UserType;
 import service.impl.UserServiceImpl;
@@ -24,7 +25,7 @@ public class Login {
 
         while (true) {
 
-            ConsoleUtil.displayColoredMessage("Enter choice: ", ConsoleUtil.BLUE);
+            ConsoleUtil.displayChoiceText("Enter choice: ");
 
             int choice = ConsoleUtil.getScanner().nextInt();
 
@@ -46,7 +47,7 @@ public class Login {
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    ConsoleUtil.displayError("Invalid choice. Please try again.");
             }
         }
     }
@@ -57,11 +58,12 @@ public class Login {
             switch (userType) {
                 case PET_OWNER -> {
                     ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("1, Schedule an appointment", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("2, View pets medical history", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("3, Logout", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("4, Exit", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayChoiceText(" Enter Choice: ");
+                    ConsoleUtil.displayOptionsText("1, Schedule an appointment");
+                    ConsoleUtil.displayOptionsText("2, View appointment");
+                    ConsoleUtil.displayOptionsText("3, View pets medical history");
+                    ConsoleUtil.displayOptionsText("4, Logout");
+                    ConsoleUtil.displayOptionsText("5, Exit");
                     int input = ConsoleUtil.getScanner().nextInt();
 
                     if (input == 1) {
@@ -69,17 +71,21 @@ public class Login {
                     } else if (input == 2) {
                         MedicalRecordsConsole.viewMedicalRecords();
                     }else if (input == 3) {
-                       userLogin();
+                         Storage.getAppointments()
+                                 .stream()
+                                 .forEach(x -> ConsoleUtil.displayColoredMessage(x.toString(), ConsoleUtil.BLUE));
                     }else if (input == 4) {
+                       userLogin();
+                    }else if (input == 5) {
                        System.exit(0);
                     }
                 }
                 case ADMINISTRATOR -> {
                     ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("1. Add pet", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("2, Logout", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("3, Exit", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayChoiceText(" Enter Choice: ");
+                    ConsoleUtil.displayOptionsText("1. Add pet");
+                    ConsoleUtil.displayOptionsText("2. Logout");
+                    ConsoleUtil.displayOptionsText("3. Exit");
                     int input = ConsoleUtil.getScanner().nextInt();
 
                     if (input == 1) {
@@ -94,14 +100,14 @@ public class Login {
                 }
                 case VET_DOCTOR -> {
                     ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayColoredMessageWithNewLine(" Enter Choice: ", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("1. Update Medical records", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("2, Logout", ConsoleUtil.BLUE);
-                    ConsoleUtil.displayColoredMessageWithNewLine("3, Exit", ConsoleUtil.BLUE);
+                    ConsoleUtil.displayChoiceText(" Enter Choice: ");
+                    ConsoleUtil.displayOptionsText("1. Update Medical records");
+                    ConsoleUtil.displayOptionsText("2. Logout");
+                    ConsoleUtil.displayOptionsText("3. Exit");
                     int input = ConsoleUtil.getScanner().nextInt();
 
                     if (input == 1) {
-
+                        MedicalRecordsConsole.updateMedicalRecord();
                     } else if (input == 2) {
                         userLogin();
                     }else if (input == 3) {
@@ -119,7 +125,7 @@ public class Login {
             Map<String, String> info = loginForm();
             User user = userService.login(info.get("email"), info.get("password"), userType);
             if (user == null) {
-                ConsoleUtil.displayColoredMessageWithNewLine("Invalid email/password, please try again", ConsoleUtil.RED);
+                ConsoleUtil.displayError("Invalid email/password, please try again");
             } else {
                 return user;
             }
@@ -135,7 +141,7 @@ public class Login {
             email = new Scanner(System.in).nextLine();
             boolean validEmail = ConsoleUtil.isValidEmail(email);
             if (!validEmail) {
-                ConsoleUtil.displayColoredMessageWithNewLine("Invalid email format, please enter a valid email", ConsoleUtil.RED);
+                ConsoleUtil.displayError("Invalid email format, please enter a valid email");
             } else {
                 break;
             }

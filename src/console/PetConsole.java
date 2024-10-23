@@ -29,7 +29,7 @@ public class PetConsole {
 
             petOwner = petOwnerService.getPetOwner(ownerId);
             if (petOwner == null) {
-                ConsoleUtil.displayColoredMessageWithNewLine("Invalid Owner Id, couldn't find Owner by that Id, Please try again", ConsoleUtil.RED);
+                ConsoleUtil.displayError("Invalid Owner Id, couldn't find Owner by that Id, Please try again");
             } else {
                 break;
             }
@@ -46,7 +46,7 @@ public class PetConsole {
         Pet newPet = new Pet(petName, petAge);
         petOwner.getPets().add(newPet);
 
-        System.out.println("Pet added successfully.");
+       ConsoleUtil.displaySuccessMessage("Pet added successfully.");
     }
 
     /**

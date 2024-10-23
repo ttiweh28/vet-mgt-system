@@ -36,6 +36,23 @@ public class ConsoleUtil {
     }
 
     // Method to display a message in a specific color
+    public static void displayError(String message) {
+        System.out.println(RED + message + RESET);
+    }
+       // Method to display a message in a specific color
+    public static void displayChoiceText(String message) {
+        System.out.println(YELLOW + message + RESET);
+    }
+           // Method to display a message in a specific color
+    public static void displayOptionsText(String message) {
+        System.out.println(BLUE + message + RESET);
+    }
+    // Method to display a message in a specific color
+    public static void displaySuccessMessage(String message) {
+        System.out.println( WHITE + message + RESET);
+    }
+
+    // Method to display a message in a specific color
     public static void displayColoredMessageWithNewLine(String message, String color) {
         System.out.println(color + message + RESET);
 //        System.out.println(WHITE_BACKGROUND + color + message + RESET);
@@ -78,7 +95,7 @@ public class ConsoleUtil {
 
             return date;
         } catch (DateTimeParseException e) {
-            displayColoredMessageWithNewLine("Invalid date format, please use MM/dd/yyyy", RED);
+            displayError("Invalid date format, please use MM/dd/yyyy");
         }
         return null;
 
@@ -95,7 +112,7 @@ public class ConsoleUtil {
 
             return date;
         } catch (DateTimeParseException e) {
-            displayColoredMessageWithNewLine("Invalid time format, please use hh:mm am/pm", RED);
+            displayError("Invalid time format, please use hh:mm am/pm");
         }
         return null;
 
@@ -111,7 +128,7 @@ public class ConsoleUtil {
 
             return date;
         } catch (DateTimeParseException e) {
-            displayColoredMessageWithNewLine("Invalid date time format", RED);
+            displayError("Invalid date time format");
         }
         return null;
 
