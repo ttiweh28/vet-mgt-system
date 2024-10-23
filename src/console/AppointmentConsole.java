@@ -46,13 +46,13 @@ public class AppointmentConsole {
             Appointment appointment = appointmentService.scheduleAppointment(appointmentDate, reason);
 
             if (appointment == null) {
-                ConsoleUtil.displayColoredMessageWithNewLine("The selected Date is not Available, please select another Date/time", ConsoleUtil.RED);
+                ConsoleUtil.displayError("The selected Date is not Available, please select another Date/time");
             } else {
                 break;
             }
         }
 
-       ConsoleUtil.displaySuccessMessage("Appointment created successfully.");
+        ConsoleUtil.displaySuccessMessage("Appointment created successfully.");
     }
 
     public static void viewAppointments(PetOwner owner) {

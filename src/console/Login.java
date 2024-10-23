@@ -1,7 +1,7 @@
 package console;
 
+import data.PetOwner;
 import data.User;
-import data.dao.Storage;
 import service.UserService;
 import service.UserType;
 import service.impl.UserServiceImpl;
@@ -25,9 +25,7 @@ public class Login {
 
         while (true) {
 
-            ConsoleUtil.displayChoiceText("Enter choice: ");
-
-            int choice = ConsoleUtil.getScanner().nextInt();
+            int choice = ConsoleUtil.intInputValidator("Enter Choice: ");
 
             switch (choice) {
                 case 1:
@@ -58,59 +56,57 @@ public class Login {
             switch (userType) {
                 case PET_OWNER -> {
                     ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayChoiceText(" Enter Choice: ");
+                    ConsoleUtil.displayChoiceText("Choose service: ");
                     ConsoleUtil.displayOptionsText("1, Schedule an appointment");
                     ConsoleUtil.displayOptionsText("2, View appointment");
                     ConsoleUtil.displayOptionsText("3, View pets medical history");
                     ConsoleUtil.displayOptionsText("4, Logout");
                     ConsoleUtil.displayOptionsText("5, Exit");
-                    int input = ConsoleUtil.getScanner().nextInt();
+
+                    int input = ConsoleUtil.intInputValidator("Enter number: ");
 
                     if (input == 1) {
                         AppointmentConsole.scheduleAppointment();
                     } else if (input == 2) {
+                        AppointmentConsole.viewAppointments((PetOwner) loggedInUser);
+                    } else if (input == 3) {
                         MedicalRecordsConsole.viewMedicalRecords();
-                    }else if (input == 3) {
-                         Storage.getAppointments()
-                                 .stream()
-                                 .forEach(x -> ConsoleUtil.displayColoredMessage(x.toString(), ConsoleUtil.BLUE));
-                    }else if (input == 4) {
-                       userLogin();
-                    }else if (input == 5) {
-                       System.exit(0);
+                    } else if (input == 4) {
+                        userLogin();
+                    } else if (input == 5) {
+                        System.exit(0);
                     }
                 }
                 case ADMINISTRATOR -> {
                     ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayChoiceText(" Enter Choice: ");
+                    ConsoleUtil.displayChoiceText("Choose service: ");
                     ConsoleUtil.displayOptionsText("1. Add pet");
                     ConsoleUtil.displayOptionsText("2. Logout");
                     ConsoleUtil.displayOptionsText("3. Exit");
-                    int input = ConsoleUtil.getScanner().nextInt();
+                    int input = ConsoleUtil.intInputValidator("Enter number: ");
 
                     if (input == 1) {
                         PetConsole.addPet();
-                    }
-                    else if (input == 2) {
+                    } else if (input == 2) {
                         userLogin();
-                    }else if (input == 3) {
+                    } else if (input == 3) {
                         System.exit(0);
                     }
 
                 }
                 case VET_DOCTOR -> {
                     ConsoleUtil.clearConsole();
-                    ConsoleUtil.displayChoiceText(" Enter Choice: ");
+                    ConsoleUtil.displayChoiceText("Choose service: ");
                     ConsoleUtil.displayOptionsText("1. Update Medical records");
                     ConsoleUtil.displayOptionsText("2. Logout");
                     ConsoleUtil.displayOptionsText("3. Exit");
-                    int input = ConsoleUtil.getScanner().nextInt();
+                    int input = ConsoleUtil.intInputValidator("Enter number: ");
 
                     if (input == 1) {
                         MedicalRecordsConsole.updateMedicalRecord();
                     } else if (input == 2) {
                         userLogin();
-                    }else if (input == 3) {
+                    } else if (input == 3) {
                         System.exit(0);
                     }
 
@@ -134,7 +130,7 @@ public class Login {
 
     private static Map<String, String> loginForm() {
 
-        Map<String, String> unamePword = new HashMap<>();
+        Map<String, String> unamePassword = new HashMap<>();
         String email = null;
         while (true) {
             ConsoleUtil.displayColoredMessageWithNewLine("Enter email: ", ConsoleUtil.BLUE);
@@ -146,11 +142,11 @@ public class Login {
                 break;
             }
         }
-        unamePword.put("email", email);
+        unamePassword.put("email", email);
         ConsoleUtil.displayColoredMessageWithNewLine("Enter Password", ConsoleUtil.BLUE);
         String pword = ConsoleUtil.getScanner().nextLine();
-        unamePword.put("password", pword);
+        unamePassword.put("password", pword);
 
-        return unamePword;
+        return unamePassword;
     }
 }

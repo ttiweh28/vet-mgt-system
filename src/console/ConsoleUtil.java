@@ -39,17 +39,20 @@ public class ConsoleUtil {
     public static void displayError(String message) {
         System.out.println(RED + message + RESET);
     }
-       // Method to display a message in a specific color
+
+    // Method to display a message in a specific color
     public static void displayChoiceText(String message) {
         System.out.println(YELLOW + message + RESET);
     }
-           // Method to display a message in a specific color
+
+    // Method to display a message in a specific color
     public static void displayOptionsText(String message) {
         System.out.println(BLUE + message + RESET);
     }
+
     // Method to display a message in a specific color
     public static void displaySuccessMessage(String message) {
-        System.out.println( WHITE + message + RESET);
+        System.out.println(WHITE + message + RESET);
     }
 
     // Method to display a message in a specific color
@@ -131,8 +134,17 @@ public class ConsoleUtil {
             displayError("Invalid date time format");
         }
         return null;
-
     }
 
-
+    public static int intInputValidator(String message) {
+        while (true) {
+            displayChoiceText(message);
+            String input = getScanner().nextLine();
+            try {
+                return Integer.parseInt(input);
+            } catch (Exception e) {
+                ConsoleUtil.displayError("Invalid input, enter only a number");
+            }
+        }
+    }
 }

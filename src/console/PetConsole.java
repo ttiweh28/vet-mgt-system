@@ -24,8 +24,7 @@ public class PetConsole {
         PetOwner petOwner = null;
 
         while (true) {
-            ConsoleUtil.displayColoredMessage("Enter Owner Id: ", ConsoleUtil.BLUE);
-            int ownerId = ConsoleUtil.getScanner().nextInt();
+            int ownerId = ConsoleUtil.intInputValidator("Enter Owner Id: ");
 
             petOwner = petOwnerService.getPetOwner(ownerId);
             if (petOwner == null) {
@@ -37,8 +36,7 @@ public class PetConsole {
 
         ConsoleUtil.displayColoredMessage("Enter Pet Name: ", ConsoleUtil.BLUE);
         String petName = ConsoleUtil.getScanner().nextLine();
-        ConsoleUtil.displayColoredMessage("Enter Pet Age: ", ConsoleUtil.BLUE);
-        int petAge = scanner.nextInt();
+        int petAge = ConsoleUtil.intInputValidator("Enter Pet Age: ");
 
         PetService petService = new PetServiceImpl();
         petService.addPet(petName, petAge);
@@ -46,7 +44,7 @@ public class PetConsole {
         Pet newPet = new Pet(petName, petAge);
         petOwner.getPets().add(newPet);
 
-       ConsoleUtil.displaySuccessMessage("Pet added successfully.");
+        ConsoleUtil.displaySuccessMessage("Pet added successfully.");
     }
 
     /**

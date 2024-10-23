@@ -10,7 +10,7 @@ import java.util.List;
 public class MedicalRecordServiceImpl implements MedicalRecordService {
     @Override
     public void createRecord(MedicalRecord record) {
-         Storage.add(record);
+        Storage.add(record);
     }
 
     @Override

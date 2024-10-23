@@ -8,17 +8,11 @@ import service.PetService;
 import service.impl.MedicalRecordServiceImpl;
 import service.impl.PetServiceImpl;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-
-import static console.AppointmentConsole.scheduleAppointment;
-
 public class MedicalRecordsConsole {
 
     public static void viewMedicalRecords() {
 
-        ConsoleUtil.displayChoiceText("Choice pet: ");
+        ConsoleUtil.displayChoiceText("Pets: ");
 
         PetOwner owner = (PetOwner) Login.loggedInUser;
 
@@ -30,7 +24,7 @@ public class MedicalRecordsConsole {
                     return x;
                 }, (x, y) -> x + y);
 
-        int input = ConsoleUtil.getScanner().nextInt();
+        int input = ConsoleUtil.intInputValidator("Choose Pet: ");
 
         if (input > owner.getPets().size() || input < 0) {
             ConsoleUtil.displayError("Invalid choice");
@@ -41,7 +35,6 @@ public class MedicalRecordsConsole {
     }
 
     public static void updateMedicalRecord() {
-        ConsoleUtil.displayChoiceText("Choice a pet: ");
 
         PetService petService = new PetServiceImpl();
 
@@ -52,7 +45,8 @@ public class MedicalRecordsConsole {
                     return x + 1;
                 }, Integer::sum);
 
-        int petInput = ConsoleUtil.getScanner().nextInt();
+        int petInput = ConsoleUtil.intInputValidator("Choice a pet: ");
+
 
         if (petInput > petService.getAllPets().size() || petInput <= 0) {
             ConsoleUtil.displayError("Invalid choice");
@@ -64,7 +58,7 @@ public class MedicalRecordsConsole {
         Pet selectedPet = petService.getAllPets().get(petInput - 1);
 
         // Display the medical records for the selected pet
-        ConsoleUtil.displayColoredMessageWithNewLine("Choose a medical record to update using Record ID: ", ConsoleUtil.BLUE);
+        ConsoleUtil.displayColoredMessageWithNewLine("Medical records: ", ConsoleUtil.BLUE);
         selectedPet.getMedicalRecordsList().stream().map(record ->
                         "Record ID: " + record.getRecordID() + ", Treatment: " + record.getTreatment())
                 .forEach(name -> ConsoleUtil.displayColoredMessageWithNewLine(name, ConsoleUtil.BLUE));
@@ -75,7 +69,7 @@ public class MedicalRecordsConsole {
         MedicalRecord medicalRecord = null;
 
         while (true) {
-            int recordInput = ConsoleUtil.getScanner().nextInt();
+            int recordInput = ConsoleUtil.intInputValidator("Medical record ID: ");
             medicalRecord = medicalRecordService.getRecordById(recordInput);
 
             if (medicalRecord == null) {
@@ -90,7 +84,7 @@ public class MedicalRecordsConsole {
 
         // Get the new treatment or date from the veterinarian
         ConsoleUtil.displayChoiceText("Enter new treatment: ");
-        String newTreatment = ConsoleUtil.getScanner().next();
+        String newTreatment = ConsoleUtil.getScanner().nextLine();
 
         boolean updated = medicalRecordService.updateRecord(medicalRecord, newTreatment);
         if (updated) {
