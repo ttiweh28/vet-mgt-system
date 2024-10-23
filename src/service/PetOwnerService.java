@@ -1,5 +1,6 @@
 package service;
 
+import console.AppointmentConsole;
 import data.Appointment;
 import data.Pet;
 import data.PetOwner;
@@ -15,5 +16,7 @@ public interface PetOwnerService extends UserService {
     List<Pet> getPets(PetOwner owner);
 
     List<Appointment> getAppointments(PetOwner owner);
+
+    List<Appointment> addAppointments(PetOwner petOwner, Appointment appointment);
 }
 

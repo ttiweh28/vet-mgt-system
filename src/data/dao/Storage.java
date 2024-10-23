@@ -97,8 +97,8 @@ public final class Storage {
     public static boolean getAppointmentBasedOnDateAndTime(LocalDateTime appointmentTime) {
 
         return appointments.stream()
-                .anyMatch(appointment -> appointment.getDate().isEqual(appointmentTime));
-
+                .anyMatch(appointment -> appointment.getDate().isEqual(appointmentTime)
+                        && appointment.getDate().plusHours(1).isAfter(appointmentTime));
     }
 
     public static List<Administrator> getAdministrators() {

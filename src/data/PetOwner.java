@@ -1,12 +1,13 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PetOwner extends User {
 
 
-    private List<Pet> pets;
-    private List<Appointment> appointments;
+    private List<Pet> pets = new ArrayList<>();
+    private List<Appointment> appointments = new ArrayList<>();
 
     public List<Pet> getPets() {
         return pets;

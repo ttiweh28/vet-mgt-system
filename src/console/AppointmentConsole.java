@@ -3,7 +3,9 @@ package console;
 import data.Appointment;
 import data.PetOwner;
 import service.AppointmentService;
+import service.PetOwnerService;
 import service.impl.AppointmentServiceImpl;
+import service.impl.PetOwnerServiceImpl;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -44,6 +46,9 @@ public class AppointmentConsole {
             AppointmentService appointmentService = new AppointmentServiceImpl();
             Appointment appointment = appointmentService.scheduleAppointment(appointmentDate, reason);
 
+            PetOwnerService petOwnerService = new PetOwnerServiceImpl();
+            petOwnerService.addAppointments((PetOwner) Login.loggedInUser, appointment);
+
             if (appointment == null) {
                 ConsoleUtil.displayError("The selected date is not Available, please select another Date/time");
             } else {
@@ -54,6 +59,10 @@ public class AppointmentConsole {
     }
 
     public static void viewAppointments(PetOwner owner) {
-        System.out.println("Owner Appointments: " + owner.getAppointments());
+        if (owner !=null && owner.getAppointments() != null && owner.getAppointments().size() > 0)
+            ConsoleUtil.displayChoiceText("Owner Appointments: " + owner.getAppointments());
+        else
+            ConsoleUtil.displayError(" Pet owner doesn't have appointment");
+
     }
 }

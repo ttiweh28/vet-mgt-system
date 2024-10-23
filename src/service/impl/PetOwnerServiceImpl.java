@@ -29,4 +29,10 @@ public class PetOwnerServiceImpl extends UserServiceImpl implements PetOwnerServ
     public List<Appointment> getAppointments(PetOwner owner) {
         return null;
     }
+
+    @Override
+    public List<Appointment> addAppointments(PetOwner petOwner, Appointment appointment) {
+         petOwner.getAppointments().add(appointment);
+         return petOwner.getAppointments();
+    }
 }
