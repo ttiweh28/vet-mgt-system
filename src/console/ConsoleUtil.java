@@ -23,9 +23,6 @@ public class ConsoleUtil {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
-    // BLACK
-    public static final String WHITE_BACKGROUND = "\033[47m";   // WHITE BACKGROUND
-
 
     // Regular expression for validating email
     private static final String EMAIL_REGEX = "^[\\w-\\.]+@[\\w-]+\\.[a-zA-Z]{2,}$";

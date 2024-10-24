@@ -1,4 +1,3 @@
-import console.LoadingPage;
 import console.Login;
 
 import java.util.Scanner;
@@ -15,8 +14,6 @@ public class Main {
         System.out.println(banner);
         System.out.println(welcome);
         System.out.println(banner);
-
-//        LoadingPage.showLoadingPage("Vet Management System", 2);
 
         DummyDataPopulate.populateAll();
 

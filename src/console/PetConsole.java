@@ -16,7 +16,6 @@ public class PetConsole {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-
     public static void addPet() {
 
         PetOwnerService petOwnerService = new PetOwnerServiceImpl();

@@ -56,33 +56,6 @@ public final class Storage {
     }
 
     /**
-     * Gets medical records.
-     *
-     * @return the medical records
-     */
-    public static List<MedicalRecord> getMedicalRecords() {
-        return medicalRecords;
-    }
-
-    /**
-     * Gets appointments.
-     *
-     * @return the appointments
-     */
-    public static List<Appointment> getAppointments() {
-        return appointments;
-    }
-
-    /**
-     * Gets pet list.
-     *
-     * @return the pet list
-     */
-    public static List<Pet> getPetList() {
-        return pets;
-    }
-
-    /**
      * Gets medical record.
      *
      * @param recordid the recordid
@@ -92,20 +65,6 @@ public final class Storage {
     public static MedicalRecord getMedicalRecord(int recordid) {
         return medicalRecords.stream()
                 .filter(record -> record.getRecordID() == recordid)
-                .findFirst()
-                .orElse(null);
-    }
-
-    /**
-     * Gets appointment.
-     *
-     * @param appointmentID the appointment id
-     * @return the appointment
-     */
-//retrieve a particular appointment from a list of appointments using an id
-    public static Appointment getAppointment(int appointmentID) {
-        return appointments.stream()
-                .filter(appointment -> appointment.getAppointmentID() == appointmentID)
                 .findFirst()
                 .orElse(null);
     }
@@ -167,7 +126,6 @@ public final class Storage {
         };
     }
 
-
     /**
      * Gets appointment based on date and time.
      *
@@ -182,39 +140,12 @@ public final class Storage {
     }
 
     /**
-     * Gets administrators.
-     *
-     * @return the administrators
-     */
-    public static List<Administrator> getAdministrators() {
-        return administrators;
-    }
-
-    /**
      * Gets pets.
      *
      * @return the pets
      */
     public static List<Pet> getPets() {
         return pets;
-    }
-
-    /**
-     * Gets pet owners.
-     *
-     * @return the pet owners
-     */
-    public static List<PetOwner> getPetOwners() {
-        return petOwners;
-    }
-
-    /**
-     * Gets veterinary doctors.
-     *
-     * @return the veterinary doctors
-     */
-    public static List<VeterinaryDoctor> getVeterinaryDoctors() {
-        return veterinaryDoctors;
     }
 }
 

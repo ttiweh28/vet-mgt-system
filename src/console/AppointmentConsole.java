@@ -10,11 +10,8 @@ import service.impl.PetOwnerServiceImpl;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Scanner;
 
 public class AppointmentConsole {
-
-    private static final Scanner scanner = new Scanner(System.in);
 
     public static void scheduleAppointment() {
 
@@ -62,7 +59,7 @@ public class AppointmentConsole {
         if (owner != null && owner.getAppointments() != null && owner.getAppointments().size() > 0)
 
             owner.getAppointments().stream()
-                            .forEach(md->ConsoleUtil.displaySuccessMessage(md.toString()));
+                    .forEach(md -> ConsoleUtil.displaySuccessMessage(md.toString()));
 
         else
             ConsoleUtil.displayError(" Pet owner doesn't have appointment");

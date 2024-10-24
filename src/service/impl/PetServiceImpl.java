@@ -14,21 +14,6 @@ public class PetServiceImpl implements PetService {
     }
 
     @Override
-    public Pet getPetById(int petId) {
-        return null;
-    }
-
-    @Override
-    public boolean updatePet(Pet pet) {
-        return false;
-    }
-
-    @Override
-    public boolean deletePet(int petId) {
-        return false;
-    }
-
-    @Override
     public List<Pet> getAllPets() {
         return Storage.getPets();
     }

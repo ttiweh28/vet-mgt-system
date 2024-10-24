@@ -31,7 +31,7 @@ public class MedicalRecordsConsole {
         } else {
 
             owner.getPets().get(input - 1).getMedicalRecordsList()
-                    .stream().forEach(md ->ConsoleUtil.displaySuccessMessage(md.toString()));
+                    .stream().forEach(md -> ConsoleUtil.displaySuccessMessage(md.toString()));
         }
 
     }

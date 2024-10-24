@@ -6,9 +6,7 @@ import data.PetOwner;
 import data.dao.Storage;
 import service.AppointmentService;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class AppointmentServiceImpl implements AppointmentService {
 
@@ -27,25 +25,4 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointment;
     }
 
-    @Override
-    public Appointment getAppointmentById(int appointmentId) {
-        return null;
-    }
-
-    @Override
-    public List<Appointment> getAppointmentsByDate(LocalDate date) {
-
-        return null;
-    }
-
-    @Override
-    public boolean updateAppointment(Appointment appointment) {
-
-        return false;
-    }
-
-    @Override
-    public boolean cancelAppointment(int appointmentId) {
-        return false;
-    }
 }
