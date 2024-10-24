@@ -56,13 +56,8 @@ public class MedicalRecord {
     }
 
     @Override
-//    public String toString() {
-//        return "MedicalRecords:\n" +
-//                "RecordID : " + recordID +
-//                "\nDate : " + date +
-//                "\nTreatment :" + treatment + '\n';
-//    }
     public String toString() {
+
         ConsoleUtil.displaySuccessMessage("Medical Record:");
         return String.format(
                         "+----------------+------------------+\n" +

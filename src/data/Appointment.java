@@ -3,6 +3,7 @@ package data;
 import console.ConsoleUtil;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class Appointment {
@@ -44,15 +45,9 @@ public class Appointment {
     }
 
     @Override
-//    public String toString() {
-//        return "Appointment ID: " + appointmentID +
-//                ", Date: " + date +
-//                ", Reason: " + reason +
-//                ", Pet Owner: " + (petOwner != null
-//                ? petOwner.getFirstName() + " " + petOwner.getLastName()
-//                : "No Owner Assigned");
-//    }
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm a");
+
         String ownerInfo = (petOwner != null)
                 ? petOwner.getFirstName() + " " + petOwner.getLastName()
                 : "No Owner Assigned";
@@ -63,7 +58,7 @@ public class Appointment {
                         "+-----------------+----------------------+---------------------+--------------------------+\n" +
                         "| %-15s | %-20s | %-20s | %-24s |\n" +
                         "+-----------------+----------------------+---------------------+--------------------------+",
-                appointmentID, date, reason, ownerInfo
+                appointmentID, formatter.format(date), reason, ownerInfo
         );
     }
 
